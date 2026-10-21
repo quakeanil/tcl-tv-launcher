@@ -17,6 +17,9 @@ A slow 2 GB TCL "Smart TV" (Android TV 11, Japan market) made usable again, **ov
   stop working once the Google TV launcher is gone. This repo brings them back and lets you **remap or disable any
   button**. See [Remote control options](#remote-control-options).
 
+**New here?** Read **[docs/how-we-solved-it.md](docs/how-we-solved-it.md)**: the problems we hit (slow TV, dead remote
+buttons, volume going up by 2, a service that kept unbinding), how we found each cause and how we fixed it.
+
 > Package names and key codes are for this firmware (`TCL/G03_4K_GB_NF/BeyondTV4:11`, Realtek RTD2851M). Other TCL
 > models differ; check `pm list packages` and your own key codes before reusing the lists. Use at your own risk, not
 > affiliated with TCL. `scripts/undo.ps1` restores everything.
