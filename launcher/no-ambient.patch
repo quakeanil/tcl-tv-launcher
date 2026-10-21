@@ -1,0 +1,12 @@
+diff --git a/launcher/app/src/main/java/com/gathin/tvhome/MainActivity.java b/launcher/app/src/main/java/com/gathin/tvhome/MainActivity.java
+index 28a35f3..25f108e 100644
+--- a/launcher/app/src/main/java/com/gathin/tvhome/MainActivity.java
++++ b/launcher/app/src/main/java/com/gathin/tvhome/MainActivity.java
+@@ -271,6 +271,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+         glass = findViewById(R.id.glass);
+         if (festive) glass.setAccent(festival.accentColor());
+         ambient = findViewById(R.id.ambient);
++        ambient.setVisibility(View.GONE);   // local patch: no app-coloured glow over the wallpaper
+         // The glow is one bitmap, so its alpha can be applied while drawing it. Otherwise every frame of
+         // a fade renders it into a full-screen offscreen buffer first.
+         ambient.forceHasOverlappingRendering(false);

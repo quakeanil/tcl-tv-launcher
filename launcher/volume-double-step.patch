@@ -1,0 +1,21 @@
+diff --git a/launcher/app/src/main/java/com/gathin/tvhome/InputKeyService.java b/launcher/app/src/main/java/com/gathin/tvhome/InputKeyService.java
+index 26e2d0c..9ea13d8 100644
+--- a/launcher/app/src/main/java/com/gathin/tvhome/InputKeyService.java
++++ b/launcher/app/src/main/java/com/gathin/tvhome/InputKeyService.java
+@@ -38,8 +38,16 @@ public class InputKeyService extends AccessibilityService {
+         return false;
+     }
+ 
++    private static boolean isVolumeKey(int keyCode) {
++        return keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN
++                || keyCode == KeyEvent.KEYCODE_VOLUME_MUTE;
++    }
++
+     @Override
+     protected boolean onKeyEvent(KeyEvent event) {
++        // This TV's window manager changes the volume before key filtering and again when the filter passes the key
++        // back, so volume went up in steps of 2. Consuming the key here drops the second pass.
++        if (isVolumeKey(event.getKeyCode())) return true;
+         String app = appKeys.get(event.getKeyCode());
+         if (app == null && !isInputKey(event.getKeyCode())) return false;
+         if (event.getAction() == KeyEvent.ACTION_UP && !event.isCanceled()) {
